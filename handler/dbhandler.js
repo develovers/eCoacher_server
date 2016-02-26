@@ -49,6 +49,15 @@ module.exports = {
 
         };
 
+        this.getNumberOfChallenges = function(onRetrieved)
+        {
+            db.collection('retos').count({}, function(err, count)
+            {
+                var nElements = count;
+                if (onRetrieved)
+                    onRetrieved(nElements);
+            });
+        };
 
         this.retrieveChallenge = function(idChallenge, res, onRetrieved)
         {
@@ -72,6 +81,7 @@ module.exports = {
                     console.log('Error al leer el reto ('+err+')');
                 }
             });
+
         };
 
         this.setChallengeCompleted = function(idChallenge, res, onUpdated)
