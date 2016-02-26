@@ -1,7 +1,7 @@
 // Let's load the framework modules
 var app = require('./handler/apphandler');
 var db = require('./handler/dbhandler');
-var router = require('./handler/routerhandler');
+var router = require('./controller/routercontroller');
 
 var defaultPort = 3000;
 
