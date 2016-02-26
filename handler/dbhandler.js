@@ -74,6 +74,23 @@ module.exports = {
             });
         };
 
+        this.setChallengeCompleted = function(idChallenge, res, onUpdated)
+        {
+            db.collection('retos').updateOne(
+                { 'retoID' : idChallenge},
+                {
+                    $set:{'completado': 1}
+                },
+                function(err, results) {
+                    console.log(err);
+                    console.log(results);
+                    if (!err)
+                    {
+                        onUpdated(res, results);
+                    }
+                });
+        };
+
         this.isConnected = function()
         {
             return connected;
