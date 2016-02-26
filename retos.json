@@ -1,0 +1,48 @@
+{
+    "retoID": 1,
+    "nivel": 1,
+    "Titulo": "Vete de paseo",
+    "descripcion": "Que te de un poco el aire... da un paseo ",
+    "ovjetivo": 5,
+    "copletado": 0,
+    "accion":"Camina",
+    "unidades":"Km";
+    "imagen"="",
+}
+
+{
+    "retoID": 2,
+    "nivel": 1,
+    "Titulo": "Visita de amigos",
+    "descripcion": "Es hora de quedar con esos amigos que hace tanto tiempo que no ves ",
+    "ovjetivo": 2,
+    "copletado": 0,
+    "accion":"Vete a ver",
+    "unidades":"Amigos";
+    "imagen"="",
+}
+
+
+{
+    "retoID": 3,
+    "nivel": 1,
+    "Titulo": "No toques el movil!",
+    "descripcion": "Aguanta sin desbloquear el movil. ",
+    "ovjetivo": 2,
+    "copletado": 0,
+    "accion":"Sin desbloquear",
+    "unidades":"Horas";
+    "imagen"="",
+}
+
+{
+    "retoID": 4,
+    "nivel": 1,
+    "Titulo": "Nuevos amigos",
+    "descripcion": "¿porque no intetnas conocer a algien? animo sal a la acalle ",
+    "ovjetivo": 1,
+    "copletado": 0,
+    "accion":"Conoce",
+    "unidades":"Amigos";
+    "imagen"="",
+}
