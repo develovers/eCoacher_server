@@ -6,8 +6,8 @@
     "ovjetivo": 5,
     "copletado": 0,
     "accion":"Camina",
-    "unidades":"Km";
-    "imagen"="",
+    "unidades":"Km",
+    "imagen":"",
 }
 
 {
@@ -19,7 +19,7 @@
     "copletado": 0,
     "accion":"Vete a ver",
     "unidades":"Amigos";
-    "imagen"="",
+    "imagen":""
 }
 
 
@@ -31,8 +31,8 @@
     "ovjetivo": 2,
     "copletado": 0,
     "accion":"Sin desbloquear",
-    "unidades":"Horas";
-    "imagen"="",
+    "unidades":"Horas",
+    "imagen":""
 }
 
 {
@@ -43,6 +43,6 @@
     "ovjetivo": 1,
     "copletado": 0,
     "accion":"Conoce",
-    "unidades":"Amigos";
-    "imagen"="",
+     "unidades":"Amigos",
+    "imagen":""
 }
