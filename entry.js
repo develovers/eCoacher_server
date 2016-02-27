@@ -13,5 +13,6 @@ routerHandler.configureRoutes();
 
 dbHandler.connectToDB(function (){
     console.log('ok, is connected!');
+    appHandler.disableAccessControl();
     appHandler.run();
 });
