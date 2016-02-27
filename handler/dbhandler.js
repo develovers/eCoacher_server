@@ -164,6 +164,7 @@ module.exports = {
 
         var createNewComment = function(idComment, res, onRetrieved)
         {
+            console.log("Creando comentario de id: "+idComment);
             var cursor = db.collection('comentarios').find({'commentID':idComment});
 
             cursor.each(function(err, doc)
@@ -193,8 +194,10 @@ module.exports = {
         {
             if (idComment == RANDOM_COMMENT)
             {
-                this.getNumberOfComments(function (count) {
-                    createNewComment(randomInt(1, count + 1), res, onRetrieved);
+                this.getNumberOfComments(function (countJSON) {
+                    var count = countJSON.count;
+                    var id = randomInt(1, count + 1);
+                    createNewComment(id, res, onRetrieved);
                 });
             }
             else

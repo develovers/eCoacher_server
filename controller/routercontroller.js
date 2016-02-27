@@ -42,7 +42,12 @@ module.exports = {
             });
 
             router.get('/getNewComment', function(req, res) {
-                dbHandler.retrieveComment(JSON.parse(req.query.objectID), res, printResult);
+                var id = 0;
+
+                if (req.query.id)
+                    id = parseInt(req.query.id);
+
+                dbHandler.retrieveComment(id, res, printResult);
             });
 
             router.get('/acceptNewChallenge', function(req, res) {
