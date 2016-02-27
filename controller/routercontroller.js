@@ -42,8 +42,6 @@ module.exports = {
             });
 
             router.get('/acceptNewChallenge', function(req, res) {
-                console.log('accept new challenge called.');
-                console.dir(req.query.challengeJSON);
                 dbHandler.acceptNewChallenge(JSON.parse(req.query.challengeJSON), res, printResult);
             });
 

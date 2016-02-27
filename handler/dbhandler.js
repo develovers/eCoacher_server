@@ -3,7 +3,6 @@ var mongoose   = require('mongoose')
     , dbHost = '127.0.0.1:27017'
     , dbName = 'ecoacher'
     , db_lnk   = 'mongodb://'+dbHost+'/'+dbName;
-var ObjectID = require('mongodb').ObjectID;
 
 function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);
@@ -79,6 +78,31 @@ module.exports = {
             });
         };
 
+        var getLastUid = function(onLastUidRetrieved)
+        {
+            var cursor = db.collection('lastuid').find({'id':0});
+
+            cursor.each(function(err, doc)
+            {
+                console.log('Mirando lastUID');
+                if (err == null && doc != null)
+                {
+                    if (onLastUidRetrieved)
+                        onLastUidRetrieved(doc.uid);
+                }
+
+            });
+        };
+
+        var saveLastUid = function(lastUid)
+        {
+            db.collection('lastuid').updateOne(
+                { "id" : 0},
+                {
+                    $set:{'uid': lastUid}
+                });
+        };
+
         var createNewChallenge = function(idChallenge, res, onRetrieved)
         {
             var cursor = db.collection('retos').find({'retoID':idChallenge});
@@ -97,14 +121,22 @@ module.exports = {
 
                 if (doc != null)
                 {
-                    if (onRetrieved)
+                    getLastUid(function(lastUid)
                     {
-                        doc.nivel = 0;
-                        doc.objetivo = randomInt(1, 3);
-                        doc.completado = 0;
-                        onRetrieved(res, doc);
-                    }
-                    console.dir(doc);
+                        if (lastUid == null)
+                            lastUid = 0;
+
+                        lastUid++;
+                        if (onRetrieved)
+                        {
+                            doc.uid = lastUid;
+                            doc.nivel = 0;
+                            doc.objetivo = randomInt(1, 3);
+                            doc.completado = 0;
+                            onRetrieved(res, doc);
+                        }
+
+                    });
                 }
                 else
                 {
@@ -162,9 +194,8 @@ module.exports = {
                             if (doc != null && onRetrieved)
                             {
 
-                                console.log('Hay contenido: ');
-                                console.dir(doc);
                                 //Completamos doc con la información de currentChallenge
+                                doc.uid = currentChallenge.uid;
                                 doc.nivel = currentChallenge.nivel;
                                 doc.objetivo = currentChallenge.objetivo;
                                 doc.completado = currentChallenge.completado;
@@ -187,19 +218,18 @@ module.exports = {
 
         this.acceptNewChallenge = function(challengeJson, res, onRetrieved)
         {
-            var convertedElement = {'tipo':challengeJson.retoID, 'nivel':challengeJson.nivel,
+            var convertedElement = {'uid':challengeJson.uid, 'tipo':challengeJson.retoID, 'nivel':challengeJson.nivel,
             'objetivo':challengeJson.objetivo, 'completado':challengeJson.completado};
-            console.dir(convertedElement);
             db.collection('usuario').insertOne(convertedElement, function (err, result)
             {
                 if (err != null)
                 {
                     console.log('Error al escribir el registro en el metodo de aceptar reto:' + err);
-                    console.dir(challengeJson);
                 }
                 else
                 {
                     console.log('Reto aceptado!');
+                    saveLastUid(convertedElement.uid);
                     onRetrieved(res, result);
                 }
             });
@@ -207,13 +237,11 @@ module.exports = {
 
         this.removeChallenge = function(objectId, res, onRetrieved)
         {
-            console.dir(objectId);
-            db.collection('usuario').deleteOne({'_id':objectId}, function (err, result)
+            db.collection('usuario').deleteOne({'uid':objectId}, function (err, result)
             {
                 if (err != null)
                 {
                     console.log('Error al eliminar el registro en el metodo de borrar reto:' + err);
-                    console.dir(objectId);
                 }
                 else
                 {
@@ -225,25 +253,19 @@ module.exports = {
 
         this.setChallengeCompleted = function(objectId, res, onUpdated)
         {
-            var test = new ObjectID(objectId);
-            console.dir(objectId);
-            console.dir(test);
-            console.log(test.id);
             db.collection('usuario').updateOne(
-                { "_id" : test},
+                { "uid" : objectId},
                 {
                     $set:{'completado': 100}
                 },
                 function(err, results) {
                     if (err != null) {
                         console.log('Error al colocar el reto en modo completo ('+err+')');
-                        console.dir(results);
                     }
                     else
                     {
                         console.log('Reto colocado como completo con éxito.');
                         onUpdated(res, results);
-                        console.dir(results);
                     }
                 });
         };
