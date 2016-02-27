@@ -1,48 +1,40 @@
 {
     "retoID": 1,
-    "nivel": 1,
     "titulo": "Vete de paseo",
     "descripcion": "Que te de un poco el aire... da un paseo ",
-    "objetivo": 5,
-    "completado": 0,
     "accion":"Camina",
     "unidades":"Km",
+    "icono":"walk",
     "imagen":""
 }
 
 {
     "retoID": 2,
-    "nivel": 1,
     "titulo": "Visita de amigos",
     "descripcion": "Es hora de quedar con esos amigos que hace tanto tiempo que no ves.",
-    "objetivo": 2,
-    "completado": 0,
     "accion":"Queda con",
     "unidades":"Amigos",
+    "icono":"friends",
     "imagen":""
 }
 
 
 {
     "retoID": 3,
-    "nivel": 1,
     "titulo": "No toques el movil!",
     "descripcion": "Aguanta sin desbloquear el movil. ",
-    "objetivo": 2,
-    "completado": 0,
     "accion":"Sin desbloquear",
     "unidades":"Horas",
+    "icono":"donttouch",
     "imagen":""
 }
 
 {
     "retoID": 4,
-    "nivel": 1,
     "titulo": "Nuevos amigos",
     "descripcion": "¿Porque no intentas conocer a algien? ánimo sal a la acalle ",
-    "objetivo": 1,
-    "completado": 0,
     "accion":"Conoce",
     "unidades":"Amigos",
+    "icono":"addfriends",
     "imagen":""
 }
