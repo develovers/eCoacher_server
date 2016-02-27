@@ -310,12 +310,12 @@ module.exports = {
             });
         };
 
-        this.setChallengeCompleted = function(objectId, res, onUpdated)
+        this.setChallengeCompleted = function(objectId, completed, res, onUpdated)
         {
             db.collection('usuario').updateOne(
                 { "uid" : objectId},
                 {
-                    $set:{'completado': 100}
+                    $set:{'completado': completed}
                 },
                 function(err, results) {
                     if (err != null) {

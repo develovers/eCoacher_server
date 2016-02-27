@@ -55,7 +55,10 @@ module.exports = {
             });
 
             router.get('/setChallengeCompleted', function(req, res) {
-                dbHandler.setChallengeCompleted(JSON.parse(req.query.objectID), res, printResult);
+                var completado = 100;
+                if (req.query.completado)
+                    completado = parseInt(req.query.completado);
+                dbHandler.setChallengeCompleted(JSON.parse(req.query.objectID), completado, res, printResult);
             });
 
             router.get('/removeChallenge', function(req, res) {
