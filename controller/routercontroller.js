@@ -41,6 +41,10 @@ module.exports = {
                 dbHandler.getNumberOfAcceptedChallenges(res, printResult);
             });
 
+            router.get('/getNewComment', function(req, res) {
+                dbHandler.retrieveComment(JSON.parse(req.query.objectID), res, printResult);
+            });
+
             router.get('/acceptNewChallenge', function(req, res) {
                 dbHandler.acceptNewChallenge(JSON.parse(req.query.challengeJSON), res, printResult);
             });

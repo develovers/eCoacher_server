@@ -1,4 +1,6 @@
 var RANDOM_CHALLENGE = 0;
+var RANDOM_COMMENT = 0;
+
 var mongoose   = require('mongoose')
     , dbHost = '127.0.0.1:27017'
     , dbName = 'ecoacher'
@@ -78,6 +80,21 @@ module.exports = {
             });
         };
 
+        this.getNumberOfComments = function(onRetrieved)
+        {
+            db.collection('comentarios').count({}, function(err, count)
+            {
+                var nElements = count;
+                if (err != null)
+                    console.log('No se pudo obtener el número de comentarios ('+err+')');
+                else
+                    console.log('Obtenido numero de comentarios: '+count);
+
+                if (onRetrieved)
+                    onRetrieved({"count":nElements});
+            });
+        };
+
         var getLastUid = function(onLastUidRetrieved)
         {
             var cursor = db.collection('lastuid').find({'id':0});
@@ -143,6 +160,45 @@ module.exports = {
                     console.log('Error al leer el reto ('+err+')');
                 }
             });
+        };
+
+        var createNewComment = function(idComment, res, onRetrieved)
+        {
+            var cursor = db.collection('comentarios').find({'commentID':idComment});
+
+            cursor.each(function(err, doc)
+            {
+                if (err != null)
+                {
+                    console.log('error al crear un nuevo comentario! ('+err+')');
+                }
+                else
+                {
+                    console.log('Comentario creado con éxito');
+                }
+
+
+                if (doc != null)
+                {
+                    onRetrieved(res, doc);
+                }
+                else
+                {
+                    console.log('Error al leer el comentario ('+err+')');
+                }
+            });
+        };
+
+        this.retrieveComment = function(idComment, res, onRetrieved)
+        {
+            if (idComment == RANDOM_COMMENT)
+            {
+                this.getNumberOfComments(function (count) {
+                    createNewComment(randomInt(1, count + 1), res, onRetrieved);
+                });
+            }
+            else
+                createNewComment(idComment, res, onRetrieved);
         };
 
         this.retrieveNewChallenge = function(idChallenge, res, onRetrieved)
