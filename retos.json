@@ -5,7 +5,8 @@
     "accion":"Camina",
     "unidades":"Km",
     "icono":"walk",
-    "imagen":""
+    "conseguido":"¿Repetimos?",
+    "imagen":"paseo"
 }
 
 {
@@ -15,7 +16,8 @@
     "accion":"Queda con",
     "unidades":"Amigos",
     "icono":"friends",
-    "imagen":""
+    "conseguido":"Ellos te lo agradecerán.",
+    "imagen":"visita-amigos"
 }
 
 
@@ -26,15 +28,17 @@
     "accion":"Sin desbloquear",
     "unidades":"Horas",
     "icono":"donttouch",
-    "imagen":""
+    "conseguido":"¿Ha sido productiva la experiencia?",
+    "imagen":"no-movil"
 }
 
 {
     "retoID": 4,
     "titulo": "Nuevos amigos",
-    "descripcion": "¿Porque no intentas conocer a algien? ánimo sal a la acalle ",
+    "descripcion": "¿Porque no intentas conocer a alguien? ánimo sal a la calle ",
     "accion":"Conoce",
     "unidades":"Amigos",
     "icono":"addfriends",
-    "imagen":""
+    "conseguido":"Siempre se aprende algo nuevo de cada persona...",
+    "imagen":"nuevos-amigos"
 }
