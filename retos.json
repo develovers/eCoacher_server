@@ -5,7 +5,7 @@
     "accion":"Camina",
     "unidades":"Km",
     "icono":"walk",
-    "consegido":"¿Repetimos?",
+    "conseguido":"¿Repetimos?",
     "imagen":"paseo"
 }
 
@@ -16,7 +16,7 @@
     "accion":"Queda con",
     "unidades":"Amigos",
     "icono":"friends",
-    "consegido":"Ellos te lo agradecerán.",
+    "conseguido":"Ellos te lo agradecerán.",
     "imagen":"visita-amigos"
 }
 
@@ -28,7 +28,7 @@
     "accion":"Sin desbloquear",
     "unidades":"Horas",
     "icono":"donttouch",
-    "consegido":"¿Ha sido productiva la experiencia?",
+    "conseguido":"¿Ha sido productiva la experiencia?",
     "imagen":"no-movil"
 }
 
@@ -39,6 +39,6 @@
     "accion":"Conoce",
     "unidades":"Amigos",
     "icono":"addfriends",
-    "consegido":"Siempre se aprende algo nuevo de cada persona...",
+    "conseguido":"Siempre se aprende algo nuevo de cada persona...",
     "imagen":"nuevos-amigos"
 }
