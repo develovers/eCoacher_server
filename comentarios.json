@@ -1,41 +1,48 @@
 {
     "commentID": 1,
     "title": "¡Hola! :)",
-    "comment": "No tengo nada que decirte ahora, ¡ve a divertirte!"
+    "comment": "No tengo nada que decirte ahora, ¡ve a divertirte!",
+    "icon": "wink"
 }
 
 {
     "commentID": 2,
     "title": "Lo siento mucho",
-    "comment": "Ahora estoy cansado para atenderte"
+    "comment": "Ahora estoy cansado para atenderte",
+    "icon": "sleepy"
 }
 
 {
     "commentID": 3,
     "title": "¿Sabías qué?",
-    "comment": "Todo lo que alguna vez has deseado, está al otro lado del miedo."
+    "comment": "Todo lo que alguna vez has deseado, está al otro lado del miedo.",
+    "icon": "wary"
 }
 
 {
     "commentID": 4,
     "title": "Vete a hacer algo",
-    "comment": "Solo existen dos días en el año en que no se puede hacer nada. Uno se llama ayer y otro mañana."
+    "comment": "Solo existen dos días en el año en que no se puede hacer nada. Uno se llama ayer y otro mañana.",
+    "icon": "cute"
 }
 
 {
     "commentID": 5,
     "title": "No tengas miedo",
-    "comment": "Sólo una cosa convierte en imposible un sueño: el miedo a fracasar."
+    "comment": "Sólo una cosa convierte en imposible un sueño: el miedo a fracasar.",
+    "icon": "happy"
 }
 
 {
     "commentID": 6,
     "title": "Piensa en tu futuro",
-    "comment": "Pregúntate si lo que estás haciendo hoy te acerca al lugar en el que quieres estar mañana."
+    "comment": "Pregúntate si lo que estás haciendo hoy te acerca al lugar en el que quieres estar mañana.",
+    "icon": "wary"
 }
 
 {
     "commentID": 7,
     "title": "Yo creo que...",
-    "comment": "Una vez que algo es una pasión, hay motivación."
+    "comment": "Una vez que algo es una pasión, hay motivación.",
+    "icon": "wink"
 }
