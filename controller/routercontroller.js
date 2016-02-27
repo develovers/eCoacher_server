@@ -5,9 +5,6 @@ var printResult = function(res, pJSON)
     res.send(pJSON);
 };
 
-function randomInt (low, high) {
-    return Math.floor(Math.random() * (high - low) + low);
-}
 
 
 module.exports = {
@@ -23,24 +20,39 @@ module.exports = {
 
         this.configureRoutes = function()
         {
-            router.get('/getChallenge', function(req, res) {
-                dbHandler.getNumberOfChallenges(function(count)
-                {
-                    var id = randomInt(1, count+1);
+            router.get('/getNewChallenge', function(req, res) {
+                var id = 0;
 
-                    if (req.query.id)
-                        id = parseInt(req.query.id);
+                if (req.query.id)
+                    id = parseInt(req.query.id);
 
-                    console.log("Retrieving from id \""+ id+"\"");
-                    dbHandler.retrieveChallenge(id, res, printResult);
-                });
+                dbHandler.retrieveNewChallenge(id, res, printResult);
+            });
 
+            router.get('/getNumberOfAcceptedChallenges', function(req, res) {
+                dbHandler.getNumberOfAcceptedChallenges(res, printResult);
+            });
+
+            router.get('/getAcceptedChallenge', function(req, res) {
+                dbHandler.retrieveAcceptedChallenges(parseInt(req.query.index), res, printResult);
+            });
+
+            router.get('/getNumberOfAcceptedChallenges', function(req, res) {
+                dbHandler.getNumberOfAcceptedChallenges(res, printResult);
+            });
+
+            router.get('/acceptNewChallenge', function(req, res) {
+                console.log('accept new challenge called.');
+                console.dir(req.query.challengeJSON);
+                dbHandler.acceptNewChallenge(JSON.parse(req.query.challengeJSON), res, printResult);
             });
 
             router.get('/setChallengeCompleted', function(req, res) {
-                var id = parseInt(req.query.id);
-                dbHandler.setChallengeCompleted(id, res, printResult);
-                //dbHandler.retrieveChallenge(randomInt(1, 5), res, printResult);
+                dbHandler.setChallengeCompleted(JSON.parse(req.query.objectID), res, printResult);
+            });
+
+            router.get('/removeChallenge', function(req, res) {
+                dbHandler.removeChallenge(JSON.parse(req.query.objectID), res, printResult);
             });
         };
     }
